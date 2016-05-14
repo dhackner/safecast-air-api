@@ -46,6 +46,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'safecast_air_api.users',  # custom users app
     'safecast_air_api.geo',
+    'safecast_air_api.sensor_data',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

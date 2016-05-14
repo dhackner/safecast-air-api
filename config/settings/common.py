@@ -27,6 +27,7 @@ DJANGO_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
 
     # Useful template tags:
     # 'django.contrib.humanize',
@@ -44,7 +45,7 @@ THIRD_PARTY_APPS = (
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'safecast_air_api.users',  # custom users app
-    # Your stuff: custom apps go here
+    'safecast_air_api.geo',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -102,6 +103,7 @@ DATABASES = {
     'default': env.db('DATABASE_URL', default='postgres:///safecast_air_api'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
+DATABASES['default']['engine'] = 'django.contrib.gis.db.backends.postgis'
 
 
 # GENERAL CONFIGURATION

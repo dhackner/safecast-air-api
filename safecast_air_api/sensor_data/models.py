@@ -5,9 +5,14 @@ from model_utils.models import TimeStampedModel
 
 from django.contrib.postgres.fields import JSONField
 
+
 class RawReading(TimeStampedModel):
 
     raw_json = JSONField(null=True)
+
+    @property
+    def processed(self):
+        return self.readings.exists()
 
 
 class Device(TimeStampedModel):
@@ -44,7 +49,7 @@ class Reading(TimeStampedModel):
 
     sensor = models.ForeignKey('Sensor')
     stamp = models.ForeignKey('ReadingStamp')
-    raw_reading = models.ForeignKey('RawReading')
+    raw_reading = models.ForeignKey('RawReading', related_name='readings')
 
 
 class GasReading(Reading):

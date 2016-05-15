@@ -19,7 +19,7 @@ urlpatterns = [
     url(r'^users/', include('safecast_air_api.users.urls', namespace='users')),
     url(r'^accounts/', include('allauth.urls')),
 
-    # Your stuff: custom urls includes go here
+    url(r'^data/', include('safecast_air_api.sensor_data.urls', namespace='data')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

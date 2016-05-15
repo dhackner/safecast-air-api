@@ -10,7 +10,6 @@ from .forms import RawReadingForm
 class UploadRawReadingView(View):
 
     def post(self, request, *args, **kwargs):
-        print 'daniel'
         print request.POST
         form = RawReadingForm(request.POST)
         if not form.is_valid():

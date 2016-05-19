@@ -41,12 +41,13 @@ class ReadingStamp(TimeStampedModel):  # Way to link readings across sensors
     reading_time = models.DateTimeField()
     location = models.ForeignKey('geo.Point')
     fix = models.BooleanField()
-    speed = models.FloatField()
+    speed = models.FloatField(help_text='Speed in meters per second')
     satellite_count = models.PositiveSmallIntegerField()
 
 
 class Reading(TimeStampedModel):
 
+    reading_id = models.PositiveSmallIntegerField()
     sensor = models.ForeignKey('Sensor')
     stamp = models.ForeignKey('ReadingStamp')
     raw_reading = models.ForeignKey('RawReading', related_name='readings')
